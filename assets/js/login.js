@@ -39,7 +39,7 @@ $(function () {
     // 3.把要提交的用户数据抽取出来
     var data = { username: $('#form_reg [name=username]').val(), password: $('#form_reg [name=password]').val() }
     //2. 发起ajax的POST请求
-    $.post('http://www.liulongbin.top:3007/api/reguser', data,
+    $.post('/api/reguser', data,
       function (res) {
         if (res.status !== 0) {
           return layer.msg(res.message)
@@ -57,7 +57,7 @@ $(function () {
     // 阻止默认提交行为
     e.preventDefault()
     $.ajax({
-      url:'http://www.liulongbin.top:3007/api/login',
+      url:'/api/login',
       method:'POST',
       // 快速获取表单中的数据
       data:$(this).serialize(),
@@ -70,7 +70,7 @@ $(function () {
         localStorage.setItem('token', res.token)
         console.log(res.token);
         // 跳转到后台主页
-        // location.href = '/index.html'
+        location.href = '/index.html'
       }
     })
   })
